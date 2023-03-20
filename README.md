@@ -1,2 +1,3 @@
 # Mastering React-JS
- React-JS
+
+Creating various ReactJS based products to become better at ReactJS
