@@ -1,8 +1,8 @@
 function Footer() {
   return (
-    <div>
+    <footer>
       <h3>Test Assignment</h3>
-    </div>
+    </footer>
   );
 }
 

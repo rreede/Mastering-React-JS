@@ -1,46 +1,12 @@
 import Product from "./Product";
+import ProductsList from "./ProductsList";
 
 function Products(props) {
-  return (
-    <div className="products-container">
-      <Product
-        sku={2}
-        itemName={"itemName"}
-        price={"price"}
-        weight={"weight"}
-      />
-      <Product
-        sku={2}
-        itemName={"itemName"}
-        price={"price"}
-        weight={"weight"}
-      />
-      <Product
-        sku={3}
-        itemName={"itemName"}
-        price={"price"}
-        weight={"weight"}
-      />
-      <Product
-        sku={4}
-        itemName={"itemName"}
-        price={"price"}
-        weight={"weight"}
-      />
-      <Product
-        sku={5}
-        itemName={"itemName"}
-        price={"price"}
-        weight={"weight"}
-      />
-      <Product
-        sku={6}
-        itemName={"itemName"}
-        price={"price"}
-        weight={"weight"}
-      />
-    </div>
-  );
+  const productsElements = ProductsList.map(function (productItem) {
+    return <Product id={productItem.id} {...productItem} />;
+  });
+
+  return <div className="products-container">{productsElements}</div>;
 }
 
 export default Products;
