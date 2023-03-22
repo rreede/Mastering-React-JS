@@ -1,0 +1,231 @@
+/* http://meyerweb.com/eric/tools/css/reset/ 
+   v2.0 | 20110126
+   License: none (public domain)
+*/
+
+html,
+body,
+div,
+span,
+applet,
+object,
+iframe,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+blockquote,
+pre,
+a,
+abbr,
+acronym,
+address,
+big,
+cite,
+code,
+del,
+dfn,
+em,
+img,
+ins,
+kbd,
+q,
+s,
+samp,
+small,
+strike,
+strong,
+sub,
+sup,
+tt,
+var,
+b,
+u,
+i,
+center,
+dl,
+dt,
+dd,
+ol,
+ul,
+li,
+fieldset,
+form,
+label,
+legend,
+table,
+caption,
+tbody,
+tfoot,
+thead,
+tr,
+th,
+td,
+article,
+aside,
+canvas,
+details,
+embed,
+figure,
+figcaption,
+footer,
+header,
+hgroup,
+menu,
+nav,
+output,
+ruby,
+section,
+summary,
+time,
+mark,
+audio,
+video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+menu,
+nav,
+section {
+  display: block;
+}
+body {
+  line-height: 1;
+}
+ol,
+ul {
+  list-style: none;
+}
+blockquote,
+q {
+  quotes: none;
+}
+blockquote:before,
+blockquote:after,
+q:before,
+q:after {
+  content: "";
+  content: none;
+}
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+body {
+  box-sizing: border-box;
+  font-family: Roboto;
+}
+
+h1 {
+  font-size: 2em;
+}
+
+p {
+  margin-bottom: 25px;
+  line-height: 12.5px;
+}
+
+h2 {
+  font-size: 25px;
+  font-weight: bold;
+}
+
+strong {
+  font-weight: bold;
+}
+
+.mainCountryImage {
+  border-radius: 10px;
+  width: 125px;
+  margin-right: 25px;
+  height: 175px;
+  object-fit: cover;
+}
+
+.description {
+  font-size: 0.8em;
+}
+
+.startEndDate {
+  color: gray;
+  font-size: 0.8em;
+}
+
+.placeIcon {
+  object-fit: contain;
+  width: 25px;
+}
+
+.App {
+  margin: 100px auto;
+  width: 550px;
+  background: rgb(255, 255, 255);
+  box-shadow: 3px 3px 6px rgba(0, 0, 0, 0.374);
+  border-radius: 10px;
+}
+
+.Header {
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+  padding: 25px;
+  height: 55px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-bottom: 1px solid lightgray;
+}
+
+body {
+  background: #1cd8d2; /* fallback for old browsers */
+  background: -webkit-linear-gradient(
+    to right,
+    #93edc7,
+    #1cd8d2
+  ); /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(
+    to right,
+    #93edc7,
+    #1cd8d2
+  ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+}
+
+.TravelItem {
+  display: flex;
+
+  padding: 50px;
+}
+
+.TravelItem:not(:last-child) {
+  border-bottom: 1px solid lightgray;
+}
+
+.TravelItem span {
+  display: flex;
+  justify-content: space-between;
+}
+
+.TravelItem a {
+  color: rgb(95, 95, 95);
+  font-size: 0.8em;
+}
+
+.country {
+  color: rgb(95, 95, 95);
+}
