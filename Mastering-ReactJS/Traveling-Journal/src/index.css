@@ -131,6 +131,17 @@ table {
 body {
   box-sizing: border-box;
   font-family: Roboto;
+  background: #56ab2f; /* fallback for old browsers */
+  background: -webkit-linear-gradient(
+    to right,
+    #a8e063,
+    #56ab2f
+  ); /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(
+    to right,
+    #a8e063,
+    #56ab2f
+  ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
 }
 
 h1 {
@@ -174,10 +185,10 @@ strong {
 }
 
 .App {
-  margin: 100px auto;
+  margin: 50px auto;
   width: 550px;
   background: rgb(255, 255, 255);
-  box-shadow: 3px 3px 6px rgba(0, 0, 0, 0.374);
+  box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.51);
   border-radius: 10px;
 }
 
@@ -185,25 +196,11 @@ strong {
   border-top-left-radius: 10px;
   border-top-right-radius: 10px;
   padding: 25px;
-  height: 55px;
+  height: 50px;
   display: flex;
   justify-content: center;
   align-items: center;
   border-bottom: 1px solid lightgray;
-}
-
-body {
-  background: #1cd8d2; /* fallback for old browsers */
-  background: -webkit-linear-gradient(
-    to right,
-    #93edc7,
-    #1cd8d2
-  ); /* Chrome 10-25, Safari 5.1-6 */
-  background: linear-gradient(
-    to right,
-    #93edc7,
-    #1cd8d2
-  ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
 }
 
 .TravelItem {
