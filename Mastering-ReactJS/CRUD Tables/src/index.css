@@ -1,0 +1,67 @@
+:root {
+  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  line-height: 1.5;
+  font-weight: 400;
+
+  color-scheme: light dark;
+  color: rgba(255, 255, 255, 0.87);
+  background: #ff9966; /* fallback for old browsers */
+  background: -webkit-linear-gradient(
+    to right,
+    #ff5e62,
+    #ff9966
+  ); /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(
+    to right,
+    #ff5e62,
+    #ff9966
+  ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  margin: 0;
+  display: flex;
+  place-items: center;
+  min-width: 320px;
+  min-height: 100vh;
+}
+
+table,
+td,
+tr {
+  border: 1px solid rgb(138, 138, 138);
+  border-collapse: collapse;
+  background: white;
+  color: rgb(27, 27, 27);
+}
+thead {
+  background: rgb(47, 47, 47);
+  font-weight: bold;
+}
+
+table {
+  background: white;
+  box-shadow: 5px 5px 20px rgba(0, 0, 0, 0.512);
+}
+
+input[type="text"] {
+  padding: 5px;
+  background: white;
+  border-radius: 5px;
+  border: 2px solid rgb(52, 52, 52);
+}
+
+input[type="email"] {
+  padding: 5px;
+  background: white;
+}
+
+button {
+  padding: 5px;
+}
