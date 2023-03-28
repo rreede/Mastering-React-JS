@@ -1,8 +1,9 @@
-import { useState } from "react";
+import { useState, Fragment } from "react";
 import "./App.css";
 import { nanoid } from "nanoid";
 import mockData from "./mock-data";
 import ReadOnlyRow from "./components/ReadOnlyRow";
+import EditableRow from "./components/EditableRow";
 
 function App() {
   const [contacts, setContacts] = useState(mockData);
@@ -12,6 +13,15 @@ function App() {
     phoneNumber: "",
     email: "",
   });
+
+  const [editFormData, setEditFormData] = useState({
+    fullName: "",
+    address: "",
+    phoneNumber: "",
+    email: "",
+  });
+
+  const [editContactId, setEditContactId] = useState(null);
 
   const handleAddFormChange = (event) => {
     event.preventDefault();
@@ -23,6 +33,18 @@ function App() {
     newFormData[fieldName] = fieldValue;
 
     setAddFormData(newFormData);
+  };
+
+  const handleEditFormChange = (event) => {
+    event.preventDefault();
+
+    fieldName = event.target.getAttribute("name");
+    const fieldValue = event.target.value;
+
+    const newFormData = { ...editFormData };
+    newFormData[fieldName] = fieldValue;
+
+    setEditFormData(newFormData);
   };
 
   const handleAddFormSubmit = (event) => {
@@ -41,8 +63,88 @@ function App() {
     setContacts(newContacts);
   };
 
+  const handleEditFormSubmit = (event) => {
+    event.preventDefault();
+
+    const editedContact = {
+      id: editContactId,
+      fullName: editFormData.fullName,
+      address: editFormData.address,
+      phoneNumber: editFormData.phoneNumber,
+      email: editFormData.email,
+    };
+
+    const newContacts = [...contacts];
+
+    const index = contacts.findIndex((contact) => contact.id === editContactId);
+
+    newContacts[index] = editedContact;
+
+    setContacts(newContacts);
+    setEditContactId(null);
+  };
+
+  const handleEditClick = (event, contact) => {
+    event.preventDefault();
+    setEditContactId(contact.id);
+
+    const formValues = {
+      fullName: contact.fullName,
+      address: contact.address,
+      phoneNumber: contact.phoneNumber,
+      email: contact.email,
+    };
+    setEditFormData(formValues);
+  };
+
+  const handleCancelClick = () => {
+    setEditContactId(null);
+  };
+
+  const handleDeleteClick = (contactId) => {
+    const newContacts = [...contacts];
+
+    const index = contacts.findIndex((contact) => contact.id === contactId);
+    newContacts.splice(index, 1);
+
+    setContacts(newContacts);
+  };
+
   return (
     <div className="App">
+      <form onSubmit={handleEditFormSubmit}>
+        <table>
+          <thead>
+            <tr>
+              <td>Name</td>
+              <td>Address</td>
+              <td>Phone number</td>
+              <td>Email</td>
+              <td>Actions</td>
+            </tr>
+          </thead>
+          <tbody>
+            {contacts.map((contact) => (
+              <Fragment>
+                {editContactId === contact.id ? (
+                  <EditableRow
+                    editFormData={editFormData}
+                    handleEditFormChange={handleEditFormChange}
+                    handleCancelClick={handleCancelClick}
+                  />
+                ) : (
+                  <ReadOnlyRow
+                    contact={contact}
+                    handleEditClick={handleEditClick}
+                    handleDeleteClick={handleDeleteClick}
+                  />
+                )}
+              </Fragment>
+            ))}
+          </tbody>
+        </table>
+      </form>
+
       <div className="addContactForm">
         <h2>🤹‍♂️ Add a contact</h2>
         <form onSubmit={handleAddFormSubmit} action="">
@@ -75,27 +177,12 @@ function App() {
             placeholder="Enter your email..."
             onChange={handleAddFormChange}
           />
-          <br />
+
           <button className="formSubmitButton" type="submit">
             Add Contact
           </button>
         </form>
       </div>
-      <table>
-        <thead>
-          <tr>
-            <td>Name</td>
-            <td>Address</td>
-            <td>Phone number</td>
-            <td>Email</td>
-          </tr>
-        </thead>
-        <tbody>
-          {contacts.map((contact) => (
-            <ReadOnlyRow contact={contact} />
-          ))}
-        </tbody>
-      </table>
     </div>
   );
 }
