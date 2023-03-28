@@ -1,12 +1,12 @@
-import { useState, Fragment } from "react";
-import "./App.css";
+import React, { useState, Fragment } from "react";
 import { nanoid } from "nanoid";
-import mockData from "./mock-data";
+import "./App.css";
+import data from "./mock-data";
 import ReadOnlyRow from "./components/ReadOnlyRow";
 import EditableRow from "./components/EditableRow";
 
-function App() {
-  const [contacts, setContacts] = useState(mockData);
+const App = () => {
+  const [contacts, setContacts] = useState(data);
   const [addFormData, setAddFormData] = useState({
     fullName: "",
     address: "",
@@ -38,7 +38,7 @@ function App() {
   const handleEditFormChange = (event) => {
     event.preventDefault();
 
-    fieldName = event.target.getAttribute("name");
+    const fieldName = event.target.getAttribute("name");
     const fieldValue = event.target.value;
 
     const newFormData = { ...editFormData };
@@ -59,7 +59,6 @@ function App() {
     };
 
     const newContacts = [...contacts, newContact];
-
     setContacts(newContacts);
   };
 
@@ -94,6 +93,7 @@ function App() {
       phoneNumber: contact.phoneNumber,
       email: contact.email,
     };
+
     setEditFormData(formValues);
   };
 
@@ -105,22 +105,23 @@ function App() {
     const newContacts = [...contacts];
 
     const index = contacts.findIndex((contact) => contact.id === contactId);
+
     newContacts.splice(index, 1);
 
     setContacts(newContacts);
   };
 
   return (
-    <div className="App">
+    <div className="app-container">
       <form onSubmit={handleEditFormSubmit}>
         <table>
           <thead>
             <tr>
-              <td>Name</td>
-              <td>Address</td>
-              <td>Phone number</td>
-              <td>Email</td>
-              <td>Actions</td>
+              <th>Name</th>
+              <th>Address</th>
+              <th>Phone Number</th>
+              <th>Email</th>
+              <th>Actions</th>
             </tr>
           </thead>
           <tbody>
@@ -144,47 +145,41 @@ function App() {
           </tbody>
         </table>
       </form>
-
       <div className="addContactForm">
-        <h2>🤹‍♂️ Add a contact</h2>
-        <form onSubmit={handleAddFormSubmit} action="">
+        <h2>🤹‍♂️ Add a Contact</h2>
+        <form onSubmit={handleAddFormSubmit}>
           <input
-            required="required"
             type="text"
             name="fullName"
-            id=""
-            placeholder="Enter your full name..."
+            required="required"
+            placeholder="Enter a name..."
             onChange={handleAddFormChange}
           />
           <input
             type="text"
             name="address"
-            id=""
-            placeholder="Enter your address... "
+            placeholder="Enter an address..."
             onChange={handleAddFormChange}
           />
           <input
             type="text"
             name="phoneNumber"
-            id=""
-            placeholder="Enter your phone number... "
+            placeholder="Enter a phone number..."
             onChange={handleAddFormChange}
           />
           <input
-            type="text"
+            type="email"
             name="email"
-            id=""
-            placeholder="Enter your email..."
+            placeholder="Enter an email..."
             onChange={handleAddFormChange}
           />
-
           <button className="formSubmitButton" type="submit">
-            Add Contact
+            Add
           </button>
         </form>
       </div>
     </div>
   );
-}
+};
 
 export default App;

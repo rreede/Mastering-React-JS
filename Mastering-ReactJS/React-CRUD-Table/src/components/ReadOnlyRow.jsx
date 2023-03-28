@@ -1,8 +1,6 @@
-export default function ReadOnlyRow({
-  contact,
-  handleEditClick,
-  handleDeleteClick,
-}) {
+import React from "react";
+
+const ReadOnlyRow = ({ contact, handleEditClick, handleDeleteClick }) => {
   return (
     <tr>
       <td>{contact.fullName}</td>
@@ -16,10 +14,16 @@ export default function ReadOnlyRow({
         >
           Edit
         </button>
-        <button type="button" onClick={() => handleDeleteClick(contact.id)}>
+        <button
+          className="deleteButton"
+          type="button"
+          onClick={() => handleDeleteClick(contact.id)}
+        >
           Delete
         </button>
       </td>
     </tr>
   );
-}
+};
+
+export default ReadOnlyRow;
