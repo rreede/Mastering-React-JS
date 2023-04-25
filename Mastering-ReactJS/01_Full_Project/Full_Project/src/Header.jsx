@@ -15,7 +15,11 @@ export default function Header() {
             <a href="">FAQ</a>
           </li>
         </ul>
+
+        {/* <img src="shopping_cart_FILL0_wght400_GRAD0_opsz48 (1).svg" alt="" /> */}
       </nav>
+
+      <input type="text" name="" id="" placeholder="Search..." />
     </header>
   );
 }
