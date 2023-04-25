@@ -9,10 +9,6 @@ function App() {
       <Navbar />
       <div className="content">
         <Home />
-
-        <Hello firstName="Rene" heroName="Batman" />
-        <Hello firstName="Madis" heroName="Superman" />
-        <Hello firstName="Eero" heroName="Thor" />
       </div>
     </>
   );

@@ -1,41 +1,30 @@
-import { useState } from "react";
-
+import { useState, useEffect } from "react";
+import BlogList from "./BlogList";
 const Home = () => {
-  // let name = "Mario";
+  const [blogs, setBlogs] = useState(null);
 
   const [name, setName] = useState("Mario");
-  const [age, setAge] = useState(24);
 
-  const handleClick = (e) => {
-    console.log(name, e);
-  };
+  function handleDelete(id) {
+    const newBlogs = blogs.filter((blog) => blog.id !== id);
+    setBlogs(newBlogs);
+  }
 
-  const handleClickAgain = (name, e) => {
-    console.log("hello" + name, e.type);
-  };
-
-  const changeName = () => {
-    setName("Rene");
-    setAge("26");
-  };
+  useEffect(() => {
+    fetch("http://localhost:8000/blogs")
+      .then((res) => {
+        return res.json();
+      })
+      .then((data) => {
+        setBlogs(data);
+      });
+  }, [name]);
 
   return (
     <div className="home">
-      <h2>Homepage</h2>
-      <p>{name}</p>
-      <p>
-        {name} is {age} years old
-      </p>
-      <button onClick={changeName}>Change Name</button>
-
-      <button onClick={handleClick}>Button</button>
-      <button
-        onClick={(e) => {
-          handleClickAgain("Rene", e);
-        }}
-      >
-        Click me Again
-      </button>
+      {blogs && (
+        <BlogList blogs={blogs} title="All Blogs" handleDelete={handleDelete} />
+      )}
     </div>
   );
 };
