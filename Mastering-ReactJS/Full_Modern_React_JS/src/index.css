@@ -82,3 +82,36 @@ button:focus-visible {
   max-width: 600px;
   margin: 0 auto;
 }
+
+.create label {
+  text-align: left;
+  display: block;
+  margin-bottom: 10px;
+}
+
+.create h2 {
+  font-size: 20px;
+  margin-bottom: 30px;
+}
+
+.create input,
+.create textarea,
+.create select {
+  padding: 6px 10px;
+  border: 1px solid lightgray;
+  display: block;
+  border-radius: 5px;
+  margin-bottom: 20px;
+}
+
+.create button {
+  background: rgb(89, 217, 89);
+}
+a {
+  text-decoration: none;
+  color: rgb(53, 53, 53);
+}
+
+.links a {
+  margin-left: 25px;
+}
