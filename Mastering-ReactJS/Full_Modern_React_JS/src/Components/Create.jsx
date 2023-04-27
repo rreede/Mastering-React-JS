@@ -1,5 +1,6 @@
 import { useState } from "react";
 import NavBar from "./Navbar";
+import { useNavigate } from "react-router-dom";
 
 const Create = () => {
   const [title, setTitle] = useState("");
@@ -8,12 +9,34 @@ const Create = () => {
 
   const [author, setAuthor] = useState("mario");
 
+  const [isPending, setIsPending] = useState(false);
+
+  const navigate = useNavigate();
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    const blog = { title, body, author };
+
+    setIsPending(true);
+
+    fetch("http://localhost:8000/blogs", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(blog),
+    }).then(() => {
+      console.log("New BloG added");
+      setIsPending(false);
+    });
+
+    navigate("/");
+  };
+
   return (
     <div className="create">
       <NavBar />
       <div className="content create">
         <h2>Add a new Blog</h2>
-        <form>
+        <form onSubmit={handleSubmit}>
           <label htmlFor="">Blog Title</label>
           <input
             type="text"
@@ -37,7 +60,8 @@ const Create = () => {
             <option value="mario">mario</option>
             <option value="luigi">Luigi</option>
           </select>
-          <button>Add Blog</button>
+          {!isPending && <button>Add Blog</button>}
+          {isPending && <button disabled>Adding blog...</button>}
           <p>{title}</p>
           <p>{body}</p>
           <p>{author}</p>

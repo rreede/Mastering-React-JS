@@ -7,6 +7,7 @@ import Home from "./Components/Home.jsx";
 import Root from "./Components/Root.jsx";
 import Create from "./Components/Create.jsx";
 import BlogDetails from "./Components/BlogDetails.jsx";
+import NotFound from "./Components/NotFound.jsx";
 
 const router = createBrowserRouter([
   {
@@ -20,6 +21,10 @@ const router = createBrowserRouter([
   {
     path: "/blogs/:id",
     element: <BlogDetails />,
+  },
+  {
+    path: "*",
+    element: <NotFound />,
   },
 ]);
 
